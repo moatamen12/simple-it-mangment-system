@@ -1,6 +1,6 @@
 <?php
 //starting the sesstion 
-session_start();
+// session_start();
 //creat constant to store non repeating values
 
 $dbhost = "localhost";
@@ -10,5 +10,5 @@ $dbname = "it_sys";
 
 
 if (!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname))
-    die("failed to connect!")
+    die("failed to connect!");
 ?>

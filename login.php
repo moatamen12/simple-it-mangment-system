@@ -8,7 +8,7 @@
     <title>Login</title>
 </head>
 <?php
-// session_start();
+session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($result && mysqli_num_rows($result) > 0) 
         {
             $user = mysqli_fetch_assoc($result);
+            
             if (password_verify($password, $user['password_hash'])) 
             {
                 $_SESSION['user_id'] = $user['employeeID'];
@@ -56,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
 
                 // Redirect to profile page
-                header("Location: profile.html");
+                header("Location: profile.php");
                 exit();
             } else {
                 $error = "Invalid password.";
@@ -65,15 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error = "No user found with that email and EmployeeID.";
         }
 
-       
+        mysqli_stmt_close($stmt);
     } else {
         $error = "Failed to prepare the SQL statement.";
         error_log("SQL prepare failed: " . mysqli_error($con));
     }
-    mysqli_stmt_close($stmt);
+    
 }
-
 ?>
+
 <body>
 
     <div class="container">

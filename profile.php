@@ -1,3 +1,38 @@
+<?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'Conection\connection.php';
+$user_id = $_SESSION['user_id'];
+
+$query = "SELECT fullName, email, Employee_image, role FROM Employee WHERE employeeID = ?";
+$stmt  = mysqli_prepare($con, $query);
+
+if($stmt){
+    mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $fullName, $email, $profile_image, $role);
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+    if (empty($profile_image)) {
+        $profile_image = 'images/defUSER.png';
+    }
+}else{
+    die("Failed to prepare statement: " . mysqli_error($con));
+}
+
+// Debugging output
+// var_dump($fullName, $email, $profile_image, $role);
+// exit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,18 +51,24 @@
             <div class="profile-image">
                 <img src="images/defUSER.png" alt="Profile Picture">
                 <span class="change-photo-text">Change Photo</span>
-                <input type="file" id="fileInput" accept="images/*">
+                <!-- <input type="file" id="fileInput" accept="images/*"> -->
             </div>
             <div class="profile-info">
-                <h2 class="hdr">John Doe</h2>
-                <h4 class="hdr">ID: 1234</h4>
+                <h2 class="hdr"><?php echo htmlspecialchars($fullName); ?></h2>
+
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
-                    <span>john.doe@example.com</span>
+                    <span><?php echo htmlspecialchars($email); ?></span>
                 </div>
+
                 <div class="info-item">
                     <i class="fas fa-user-tag"></i>
-                    <span>Administrator</span>
+                    <span><?php echo htmlspecialchars($role); ?></span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-id-card-clip"></i>
+                    <span><?php echo htmlspecialchars($user_id); ?></span>
                 </div>
             </div>
             <div class="profile-options">
@@ -36,6 +77,11 @@
                 <button class="btn" onclick="window.location.href='login.php'">Logout</button>
             </div>
         </div>
+
+
+
+
+
 
         <!--  chang password form  -->
         <div class=" form-box form-container" id="editProfile">
