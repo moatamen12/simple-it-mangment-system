@@ -108,6 +108,7 @@ body{
     gap: 2rem;
     padding: 2rem;
     min-height: 100vh;
+    margin-top: 80px;
 }
 .profile-card {
     /* margin:20px; */
@@ -195,10 +196,60 @@ body{
 }
 
 
-#fileInput{
-    display: none;
-    cursor: pointer;
+
+/* for the header */
+.user{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 10px;
+} 
+
+.wrapper{
+    /* border: 1px solid black; */
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
 }
+
+.text-center{
+    text-align: center; 
+}
+/* menue */
+
+.menue {
+    background-color: #333;
+    line-height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.menue ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menue ul li{
+    display: inline;
+    padding: 1%;
+}
+.menue ul li a{
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: 0.3s;
+    text-decoration: none;
+
+}
+.menue ul li a:hover{
+    background-color: #4285F4;
+    border-radius: 5px;
+}
+
+
+
 
 /* main variables */
 :root{

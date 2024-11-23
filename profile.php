@@ -5,12 +5,9 @@ error_reporting(E_ALL);
 session_start();
 
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
+include 'Conection\login-check.php';
 include 'Conection\connection.php';
+
 $user_id = $_SESSION['user_id'];
 
 $query = "SELECT fullName, email, Employee_image, role FROM Employee WHERE employeeID = ?";
@@ -39,13 +36,12 @@ if($stmt){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </head>
 <body>
 
-
+<?php include 'partials/menue.php'; ?>
     <div class="prof-container">
         <div class="profile-card">
             <div class="profile-image">

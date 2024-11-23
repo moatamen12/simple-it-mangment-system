@@ -22,6 +22,7 @@ CREATE TABLE Consumables (
     associatedProdID INT NOT NULL,
     threshold_quantity INT DEFAULT 0,
     reorder_quantity INT DEFAULT 0,
+    Stock ENUM('inStsock', 'outOfStock') NOT NULL DEFAULT 'inStsock',
     FOREIGN KEY (consumableID) REFERENCES Equipment(equipmentID),
     FOREIGN KEY (associatedProdID) REFERENCES Products(productID),
     INDEX idx_associated_prod (associatedProdID)
@@ -82,7 +83,9 @@ INSERT INTO Permissions (permission_name, description) VALUES
 ('add_eployees','Can remove equipment'),
 ('removing_employees','Can remove equipment'),
 ('view_employees','Can view equipment'),
-('edit_employees','Can chang employees rols and ditals');
+('edit_employees','Can chang employees rols and ditals'),
+
+('request_consumable','Can requist consumable');
 
 
 -- Assign permissions to roles
@@ -92,7 +95,7 @@ INSERT INTO RolePermissions (roleID, permissionID) VALUES
 ('Administrator', 4), ('Administrator', 5), ('Administrator', 6),
 ('Administrator', 7), ('Administrator', 8), ('Administrator', 9),
 ('Administrator', 10), ('Administrator', 11), ('Administrator', 12),
-('Administrator', 13);
+('Administrator', 13),('Administrator', 14);
 
 -- Stock Manager permissions
 ('Stock Manager', 1), ('Stock Manager', 2), ('Stock Manager', 3),
@@ -100,7 +103,7 @@ INSERT INTO RolePermissions (roleID, permissionID) VALUES
 
 -- Agent permissions
 ('Agent', 1), ('Agent', 5), ('Agent', 8),
-
+('Agent',14)
 -- Repairer permissions
 ('Repairer', 1), ('Repairer', 3), ('Repairer', 5), ('Repairer', 9);
 
@@ -137,7 +140,8 @@ CREATE TABLE MaintenanceContract (
     details TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (productID) REFERENCES Equipment(equipmentID)
+    FOREIGN KEY (productID) REFERENCES Equipment(equipmentID),
+    contract_status ENUM('Active', 'Expired', 'Pending Renewal') DEFAULT 'Active';
 );
 
 -- table for Repair Request
@@ -150,7 +154,8 @@ CREATE TABLE RepairRequest (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (equipmentID) REFERENCES Equipment(equipmentID),
-    FOREIGN KEY (requestedBy) REFERENCES Employee(employeeID)
+    FOREIGN KEY (requestedBy) REFERENCES Employee(employeeID),
+    expiration_date TIMESTAMP;
 );
 
 
