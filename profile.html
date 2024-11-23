@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+
+
+    <div class="prof-container">
+        <div class="profile-card">
+            <div class="profile-image">
+                <img src="images/defUSER.png" alt="Profile Picture">
+                <span class="change-photo-text">Change Photo</span>
+                <input type="file" id="fileInput" accept="images/*">
+            </div>
+            <div class="profile-info">
+                <h2 class="hdr">John Doe</h2>
+                <h4 class="hdr">ID: 1234</h4>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>john.doe@example.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-user-tag"></i>
+                    <span>Administrator</span>
+                </div>
+            </div>
+            <div class="profile-options">
+                <button class="btn" id='edit' onclick="togglePasswordForms('','editProfile')">Edit Profile</button>
+                <!-- <button class="btn">Change Password</button> -->
+                <button class="btn" onclick="window.location.href='login.html'">Logout</button>
+            </div>
+        </div>
+
+
+        <div class=" form-box form-container" id="editProfile">
+            <header>Change Password</header>
+            <form action="" method="post" >
+                <div class="field input">
+                    <label for="old-password">Current Password</label>
+                    <input type="password" name="old_password" id="old-password" autocomplete="off" required>
+                </div>
+
+                <div class="field input">
+                    <label for="new-password">New Password</label>
+                    <input type="password" name="new_password" id="new-password" autocomplete="off" required>
+                </div>
+
+                <div class="field input">
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input type="password" name="confirm_password" id="confirm-password" autocomplete="off" required>
+                </div>
+                
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Update Password" required>
+                </div>
+            </form>
+
+            <div></div>
+        </div>
+    </div>
+
+
+
+<script src="script.js"></script>
+</body>
+<!-- Add this after <body> -->
+    <div id="header"></div>
+<!-- 
+    <script>
+    fetch('partial/test.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header').innerHTML = data;
+        });
+    </script> -->
+</html>

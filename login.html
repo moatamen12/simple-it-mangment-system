@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Login</title>
+</head>
+<body>
+    <!--ERROR MASSEGES-->
+    <div id="errorMessage" ></div>
+    <!--      login     -->
+    <div class="container">
+        <div class="box form-box form-container active" id="loginForm">
+            <header>Login</header>
+            <form  id="loginForm" action="login-verification.php" method="post">
+                <div class="field input">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" autocomplete="off" required>
+                </div>
+
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off" required>
+                </div>
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Login"  required>
+                </div>
+                <?php
+                session_start();
+                if(isset($_SESSION['error'])): ?>
+                    <div class="errorMessage"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></div>
+                <?php endif; ?>
+                
+                <!-- <div class="links">
+                     <a href="#" onclick="togglePasswordForms('loginForm','changePasswordForm')" >Forgot Password</a>
+                </div> -->
+            </form>
+        </div>
+
+        <!-- changing ther password if first login  -->
+        <!-- <div class="box form-box form-container" id="changePasswordForm">
+            <header>Change Password</header>
+            <form action="" method="post" id="passwordChangeForm">
+                <div class="field input">
+                    <label for="old-password">Current Password</label>
+                    <input type="password" name="old_password" id="old-password" autocomplete="off" required>
+                </div>
+
+                <div class="field input">
+                    <label for="new-password">New Password</label>
+                    <input type="password" name="new_password" id="new-password" autocomplete="off" required>
+                </div>
+
+                <div class="field input">
+                    <label for="confirm-password">Confirm New Password</label>
+                    <input type="password" name="confirm_password" id="confirm-password" autocomplete="off" required>
+                </div>
+                
+                <div class="field">
+                    <input type="submit" class="btn" name="submit" value="Update Password" required>
+                </div>
+                <p style="text-align: center;"><em> Pleas make shore to shange the password to another new one </em></p>
+            </form>
+        </div>
+    </div> -->
+
+<script src="script.js">
+</script>
+</body>
+</html>
