@@ -37,6 +37,27 @@ CREATE TABLE Products (
     INDEX idx_barcode (barcode)
 );
 
+
+-- for View All Products with Equipment Details
+SELECT 
+    e.equipmentID, e.name, e.type, e.price, e.status, 
+    p.barcode, p.quantity 
+FROM 
+    Equipment e 
+JOIN 
+    Products p ON e.equipmentID = p.productID;
+
+-- View All Consumables with Associated Products
+SELECT 
+    c.consumableID, e.name AS consumableName, c.Stock, c.threshold_quantity, c.reorder_quantity, 
+    p.barcode AS associatedProductBarcode 
+FROM 
+    Consumables c
+JOIN 
+    Equipment e ON c.consumableID = e.equipmentID
+JOIN 
+    Products p ON c.associatedProdID = p.productID;
+
 -- table for Employee 
 CREATE TABLE Employee (
     employeeID INT PRIMARY KEY AUTO_INCREMENT,

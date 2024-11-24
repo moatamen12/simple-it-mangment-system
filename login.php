@@ -40,22 +40,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if (password_verify($password, $user['password_hash'])) 
             {
+                // Regenerate session ID for security
+                session_regenerate_id(true);
+        
+                // Set session variables
                 $_SESSION['user_id'] = $user['employeeID'];
 
-                // Update last login timestamp
+                // Update last login
                 $update_query = "UPDATE Employee SET last_login = CURRENT_TIMESTAMP WHERE employeeID = ?";
                 $update_stmt = mysqli_prepare($con, $update_query);
                 if ($update_stmt) {
                     mysqli_stmt_bind_param($update_stmt, 'i', $user['employeeID']);
-                    if (!mysqli_stmt_execute($update_stmt)) {
-                        // Log error but don't block login
-                        error_log("Failed to update last login: " . mysqli_error($con));
-                    }
+                    mysqli_stmt_execute($update_stmt);
                     mysqli_stmt_close($update_stmt);
-                } else {
-                    error_log("Failed to prepare update statement: " . mysqli_error($con));
                 }
-
                 // Redirect to profile page
                 header("Location: profile.php");
                 exit();

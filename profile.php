@@ -5,8 +5,13 @@ error_reporting(E_ALL);
 session_start();
 
 
-include 'Conection\login-check.php';
-include 'Conection\connection.php';
+include 'Conection/connection.php';
+
+// checking loging in 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 $user_id = $_SESSION['user_id'];
 
@@ -41,7 +46,7 @@ if($stmt){
 </head>
 <body>
 
-<?php include 'partials/menue.php'; ?>
+
     <div class="prof-container">
         <div class="profile-card">
             <div class="profile-image">
@@ -73,9 +78,6 @@ if($stmt){
                 <button class="btn" onclick="window.location.href='login.php'">Logout</button>
             </div>
         </div>
-
-
-
 
 
 

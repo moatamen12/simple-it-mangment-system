@@ -1,0 +1,16 @@
+Equipment (Base Entity)
+
+Attributes: equipmentID, type, name, purchaseDate, warrantyEndDate, price, status
+Relationship:
+One-to-One with Products
+One-to-One with Consumables
+Products (Specialized Equipment)
+
+Attributes: productID, barcode, quantity
+Relationship:
+Many-to-One with Consumables
+Consumables (Specialized Equipment)
+
+Attributes: consumableID, associatedProdID, threshold_quantity, reorder_quantity, Stock
+Relationship:
+Many-to-One with Products
