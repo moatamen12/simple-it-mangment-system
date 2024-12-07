@@ -21,8 +21,8 @@
         </form>
     </div>
     <!-- ConReq.html -->
-    <div class="results-container">
-        <h2>Consumable Requests</h2>
+    <!-- <div class="results-container">
+        <h2>Repair Requests</h2>
         <table class="requests-table">
             <thead>
                 <tr>
@@ -81,8 +81,63 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
+    <!-- ConReq.html -->
 
+    <!-- REoai.HTML -->
+    <div class="results-container">
+        <h2>Repair Requests</h2>
+        <table class="requests-table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Requester</th>
+                    <th>Equipment</th>
+                    <th>Issue</th>
+                    <th>Priority</th>
+                    <th>Date</th>
+                    <th>Action</th>    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Request ID">REP-001</td>
+                    <td data-label="Requester">John Doe</td>
+                    <td data-label="Equipment">HP Printer M401</td>
+                    <td data-label="Issue">Paper jam mechanism failure</td>
+                    <td data-label="Priority">High</td>
+                    <td data-label="Requested Date">2024-03-15</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Request ID">REP-002</td>
+                    <td data-label="Requester">Jane Smith</td>
+                    <td data-label="Equipment">Dell Laptop XPS15</td>
+                    <td data-label="Issue">Battery not charging</td>
+                    <td data-label="Priority">Medium</td>
+                    <td data-label="Requested Date">2024-03-14</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Request ID">REP-003</td>
+                    <td data-label="Requester">Mike Johnson</td>
+                    <td data-label="Equipment">Projector BenQ</td>
+                    <td data-label="Issue">Display showing color artifacts</td>
+                    <td data-label="Priority">Low</td>
+                    <td data-label="Requested Date">2024-03-13</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+    </div>
  
 
 </body>

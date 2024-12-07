@@ -8,6 +8,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+<!-- Add this after <body> tag and before prof-container -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" class="nav-link active">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="inventory-Equipment.html" class="nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ConReq.html" class="nav-link">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Requests</span>
+                    </a>
+                </li>
+                <li class="logout">
+                    <a href="login.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
     <div class="prof-container">
         <!-- Profile Card -->
         <div class="profile-card">
