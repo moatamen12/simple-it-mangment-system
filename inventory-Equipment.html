@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Equipment</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class='top-search-container'>
+        <header>Search Inventory </header>
+        <form action="" method="post" class="search-form">
+            <div class="search-input-group">
+                <input type="search" name="ID" id="searchbar" placeholder="Enter the ID of the Equipment">
+                <button type='submit' class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="search-type">
+                <label class="radio-label">
+                    <input type="radio" name="type" value="all" checked >
+                    <span>All</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="type" value="Consumables" >
+                    <span>Consumables</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="type" value="Products" >
+                    <span>Products</span>
+                </label>
+            </div>
+        </form>
+    </div>
+                    <!-- Display results -->
+        <!-- Display results -->
+    <div class="results-container">
+        <div class="requests-table">
+            <table >
+                <thead>
+                    <tr>
+                        <th>Equipment ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Equipment ID">EQ-001</td>
+                        <td data-label="Name">HP Printer Ink</td>
+                        <td data-label="Type">Consumables</td>
+                        <td data-label="Location">Storage Room A</td>
+                        <td data-label="Status"><span class="status-badge in-stock">In Stock</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Equipment ID">EQ-002</td>
+                        <td data-label="Name">Dell Laptop</td>
+                        <td data-label="Type">Products</td>
+                        <td data-label="Location">IT Department</td>
+                        <td data-label="Status"><span class="status-badge in-use">In Use</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Equipment ID">EQ-003</td>
+                        <td data-label="Name">A4 Paper</td>
+                        <td data-label="Type">Consumables</td>
+                        <td data-label="Location">Storage Room B</td>
+                        <td data-label="Status"><span class="status-badge low-stock">Low Stock</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Equipment ID">EQ-004</td>
+                        <td data-label="Name">Office Chair</td>
+                        <td data-label="Type">Products</td>
+                        <td data-label="Location">Office 101</td>
+                        <td data-label="Status"><span class="status-badge maintenance">Maintenance</span></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Equipment ID">EQ-005</td>
+                        <td data-label="Name">Projector</td>
+                        <td data-label="Type">Products</td>
+                        <td data-label="Location">Conference Room</td>
+                        <td data-label="Status"><span class="status-badge in-use">In Use</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

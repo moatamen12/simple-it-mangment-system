@@ -1,0 +1,146 @@
+        <?php if ($result !== null): ?>
+        <div class="results-container">
+            <?php if (mysqli_num_rows($result) > 0): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Purchase Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($row['equipmentID']); ?></td>
+                                <td><?php echo htmlspecialchars($row['type']); ?></td>
+                                <td><?php echo htmlspecialchars($row['name']); ?></td>
+                                <td><?php echo htmlspecialchars($row['purchaseDate']); ?></td>
+                                <td><?php echo htmlspecialchars($row['status']); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No results found.</p>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+
+
+    <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+include 'Conection/connection.php';
+$result = null;
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $searchId = isset($_POST['ID']) ? trim($_POST['ID']) : '';
+    $searchType = isset($_POST['type']) ? $_POST['type'] : 'all';
+
+    // echo "Search Type: " . $searchType . "<br>";
+    // echo "Search ID: " . $searchId . "<br>";
+
+    //if search bar is empty 
+    if (empty($searchId)) {
+        //use type 
+        if($searchType ==='all'){
+            $query = "SELECT * FROM equipment";
+            $stmt = mysqli_prepare($con, $query);
+        }else {
+            $query = "SELECT * FROM equipment WHERE type = ?";
+            $stmt = mysqli_prepare($con, $query);
+            mysqli_stmt_bind_param($stmt, 's', $searchType);
+        }
+    }else{
+        //use type and ID
+        if($searchType ==='all'){
+            $query = "SELECT * FROM equipment WHERE equipmentID = ?";
+            $stmt = mysqli_prepare($con, $query);
+            $searchTerm = "%$searchId%";
+            mysqli_stmt_bind_param($stmt, 's', $searchTerm);
+        }else{
+            $query = "SELECT * FROM equipment WHERE equipmentID LIKE ? AND type = ?";
+            $stmt = mysqli_prepare($con, $query);
+            $searchTerm = "%$searchId%";
+            mysqli_stmt_bind_param($stmt, 'ss', $searchTerm, $searchType);
+        }
+    }
+    // echo "Query: " . $query . "<br>";
+    // execute the query
+    if ($stmt) {
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        // echo "Rows found: " . mysqli_num_rows($result) . "<br>";
+        mysqli_stmt_close($stmt);
+    } else {
+        die("Failed to prepare statement: " . mysqli_error($con));
+    }
+    // var_dump($result);
+    // exit();
+}
+?>
+
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+
+include 'Conection/connection.php';
+$result = null;
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $searchId = isset($_POST['ID']) ? trim($_POST['ID']) : '';
+    $searchType = isset($_POST['type']) ? $_POST['type'] : 'all';
+
+    // echo "Search Type: " . $searchType . "<br>";
+    // echo "Search ID: " . $searchId . "<br>";
+
+    //if search bar is empty 
+    if (empty($searchId)) {
+        //use type 
+        if($searchType ==='all'){
+            $query = "SELECT * FROM equipment";
+            $stmt = mysqli_prepare($con, $query);
+        }else {
+            $query = "SELECT * FROM equipment WHERE type = ?";
+            $stmt = mysqli_prepare($con, $query);
+            mysqli_stmt_bind_param($stmt, 's', $searchType);
+        }
+    }else{
+        //use type and ID
+        if($searchType ==='all'){
+            $query = "SELECT * FROM equipment WHERE equipmentID = ?";
+            $stmt = mysqli_prepare($con, $query);
+            $searchTerm = "%$searchId%";
+            mysqli_stmt_bind_param($stmt, 's', $searchTerm);
+        }else{
+            $query = "SELECT * FROM equipment WHERE equipmentID LIKE ? AND type = ?";
+            $stmt = mysqli_prepare($con, $query);
+            $searchTerm = "%$searchId%";
+            mysqli_stmt_bind_param($stmt, 'ss', $searchTerm, $searchType);
+        }
+    }
+    // echo "Query: " . $query . "<br>";
+    // execute the query
+    if ($stmt) {
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        // echo "Rows found: " . mysqli_num_rows($result) . "<br>";
+        mysqli_stmt_close($stmt);
+    } else {
+        die("Failed to prepare statement: " . mysqli_error($con));
+    }
+    // var_dump($result);
+    // exit();
+}
+?>
+
+<?php echo (!isset($_POST['type']) || $_POST['type'] === 'all') ? 'checked' : ''; ?>
+<?php echo (isset($_POST['type']) && $_POST['type'] === 'Consumables') ? 'checked' : ''; ?>
+<?php echo (isset($_POST['type']) && $_POST['type'] === 'Products') ? 'checked' : ''; ?>

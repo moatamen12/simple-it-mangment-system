@@ -1,16 +1,24 @@
-Equipment (Base Entity)
 
-Attributes: equipmentID, type, name, purchaseDate, warrantyEndDate, price, status
-Relationship:
-One-to-One with Products
-One-to-One with Consumables
-Products (Specialized Equipment)
+-Types of IT Assets Managed:
+Products:
+    Devices with barcodes (e.g., PCs, monitors, laptops, printers, servers).
+Consumables:
+    Components associated with products (e.g., RAM, toner, hard drives, processors).
 
-Attributes: productID, barcode, quantity
-Relationship:
-Many-to-One with Consumables
-Consumables (Specialized Equipment)
+-. Key Stakeholders & Roles:
+Stock Manager (G.S):
+    Manages IT products and consumables (add, modify, delete).
+    Handles repair requests (validate, refuse).
+    Requests parts for repairs.
+    Generates repair reports.
 
-Attributes: consumableID, associatedProdID, threshold_quantity, reorder_quantity, Stock
-Relationship:
-Many-to-One with Products
+Administrator:
+    Updates product maintenance contracts.
+    Manages consumable requests.
+    Administers user roles (Stock Manager, Technician, Agent).
+
+Agent:
+    Requests consumables.
+    Initiates repair requests for products
+
+

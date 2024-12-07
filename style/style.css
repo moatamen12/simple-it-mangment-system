@@ -54,7 +54,7 @@ body{
 }
 .btn{
     height: 45px;
-    background: var(--btns-color);
+    background-color: var(--btns-color);
     border: 0;
     border-radius: 5px;
     color: #fff;
@@ -95,6 +95,244 @@ body{
 
 
 /* profile style */
+/* Add these styles to style.css */
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--hdr-holor);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:focus {
+    border-color: var(--btns-color);
+    box-shadow: 0 0 0 3px rgba(76, 68, 182, 0.1);
+    outline: none;
+}
+
+/* Settings Form */
+.settings-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Password Form */
+.password-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.password-form .form-group {
+    position: relative;
+}
+
+.password-form .form-group i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    cursor: pointer;
+}
+
+/* Form Buttons */
+.form-group button.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--btns-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-group button.btn:hover {
+    background-color: var(--btns-hover);
+    transform: translateY(-1px);
+}
+
+/* Form Section Headers */
+.form-section-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+    color: var(--hdr-holor);
+    font-weight: 600;
+}
+
+/* Required Field Indicator */
+.required-field::after {
+    content: '*';
+    color: var(--error-msg);
+    margin-left: 4px;
+}
+
+/* Form Field Icons */
+.field-icon {
+    color: #666;
+    margin-right: 8px;
+}
+
+/* Form Success/Error States */
+.form-group.success input {
+    border-color: var(--success-msg);
+}
+
+.form-group.error input {
+    border-color: var(--error-msg);
+}
+
+.form-group .error-message {
+    color: var(--error-msg);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .settings-form,
+    .password-form {
+        padding: 1rem;
+    }
+
+    .form-group input {
+        padding: 10px;
+    }
+}
+
+.profile-tabs {
+    flex: 1;
+    background: var(--box-background);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.tabs-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--btns-color);
+    border-bottom-color: var(--btns-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.completion-bar {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.completion-bar .progress {
+    height: 100%;
+    background: var(--btns-color);
+    transition: width 0.3s ease;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-type {
+    font-weight: 500;
+}
+
+.activity-time, .activity-device {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.notification-group {
+    margin-bottom: 2rem;
+}
+
+.notification-option {
+    margin: 1rem 0;
+}
+
+.password-strength {
+    height: 4px;
+    margin-top: 0.5rem;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.password-strength.weak { background: var(--error-msg); width: 25%; }
+.password-strength.medium { background: #ffc107; width: 50%; }
+.password-strength.strong { background: #4CAF50; width: 75%; }
+.password-strength.very-strong { background: #2E7D32; width: 100%; }
+
+.toggle-switch {
+    margin: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .tabs-header {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1;
+        text-align: center;
+    }
+}
 
 .prof-container {
     display: flex;
@@ -115,6 +353,8 @@ body{
     max-width: 400px;
     text-align: center;
 }
+
+
 /* for responevety  */
 @media screen and (max-width: 768px) {
     /* .prof-container {
@@ -162,13 +402,12 @@ body{
     user-select: none;
 }
 
-.hdr {
+/* .hdr {
     color: var(--hdr-holor);
     margin-bottom: 1rem;
     font-weight: bold;
     border-bottom: 1px solid var(--hdr-holor);
-}
-
+} */
 .info-item {
     display: flex;
     align-items: center;
@@ -319,14 +558,58 @@ tr:hover {
 }
 
 /* for the success msg */
-.successMessage{
-    display: none; 
+.successMessage {
     color: var(--success-msg);
     text-align: center; 
     /* margin-bottom: 10px; */
     margin-TOP: 20px;
     font-weight:bold ;
 }
+
+
+
+/* Status badge styles */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+.in-stock {
+    background-color: var(--success-msg);
+}
+
+.in-use {
+    background-color: var(--btns-color);
+}
+
+.low-stock {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.maintenance {
+    background-color: var(--error-msg);
+}
+.results-container {
+    margin-top: 160px; /* Adjust this value based on your search bar height */
+    padding: 20px;
+    background: var(--box-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+
+
+
+
+
 /* main variables */
 :root{
     --background-color:#e4e9f7;

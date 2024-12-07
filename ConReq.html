@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumable Requests</title>
+    
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class='top-search-container'>
+        <header>Search Inventory </header>
+        <form action="" method="post" class="search-form">
+            <div class="search-input-group">
+                <input type="search" name="ID" id="searchbar" placeholder="Enter the ID of the Equipment">
+                <button type='submit' class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <!-- ConReq.html -->
+    <div class="results-container">
+        <h2>Consumable Requests</h2>
+        <table class="requests-table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>User</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                    <th>Action</th>    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Request ID">CR-001</td>
+                    <td data-label="User">John Doe</td>
+                    <td data-label="Item">Printer Ink Cartridges</td>
+                    <td data-label="Quantity">10</td>
+                    <td data-label="Requested Date">2023-10-01</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Request ID">CR-001</td>
+                    <td data-label="User">John Doe</td>
+                    <td data-label="Item">Printer Ink Cartridges</td>
+                    <td data-label="Quantity">10</td>
+                    <td data-label="Requested Date">2023-10-01</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Request ID">CR-002</td>
+                    <td data-label="User">Jane Smith</td>
+                    <td data-label="Item">USB Flash Drives</td>
+                    <td data-label="Quantity">20</td>
+                    <td data-label="Requested Date">2023-10-02</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td data-label="Request ID">CR-003</td>
+                    <td data-label="User">Alice Johnson</td>
+                    <td data-label="Item">Laptop Batteries</td>
+                    <td data-label="Quantity">5</td>
+                    <td data-label="Requested Date">2023-10-03</td>
+                    <td data-label="Actions">
+                        <button class="btn" data-btn-type="approve">Approve</button>
+                        <button class="btn" data-btn-type="reject">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+ 
+
+</body>
+</html>
