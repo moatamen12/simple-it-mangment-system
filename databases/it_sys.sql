@@ -11,6 +11,7 @@ CREATE TABLE `user` (
     email VARCHAR(255) UNIQUE NOT NULL,
     employee_id BIGINT NOT NULL,
     start_date DATE NOT NULL,
+    phone_number VARCHAR(255),
     role ENUM('Administrator', 'Agent', 'Stock Manager') NOT NULL
 );
 
@@ -86,26 +87,23 @@ CREATE TABLE repair_request (
 
 
 
--- insertion domy data
-INSERT INTO `user` (full_name, password, email, employee_id, start_date, role) VALUES
-('Alice Johnson', 'password123', 'alice.johnson@example.com', 0001, '2023-01-15', 'Administrator'),
-('Bob Smith', 'securePass!456', 'bob.smith@example.com', 0002, '2023-02-20', 'Agent'),
-('Carlos Martinez', 'pass789word', 'carlos.martinez@example.com', 0003, '2023-03-10', 'Stock Manager'),
-('Diana Prince', 'Wonder@123', 'diana.prince@example.com', 0004, '2023-04-05', 'Agent'),
-('Ethan Hunt', 'Mission*Impossible9', 'ethan.hunt@example.com', 0005, '2023-05-25', 'Agent');
+-- -- insertion domy data
+-- INSERT INTO `user` (full_name, password, email, employee_id, start_date, role) VALUES
+-- ('Alice Johnson', 'password123', 'alice.johnson@example.com', 0001, '2023-01-15', 'Administrator'),
+-- ('Bob Smith', 'securePass!456', 'bob.smith@example.com', 0002, '2023-02-20', 'Agent'),
+-- ('Carlos Martinez', 'pass789word', 'carlos.martinez@example.com', 0003, '2023-03-10', 'Stock Manager'),
+-- ('Diana Prince', 'Wonder@123', 'diana.prince@example.com', 0004, '2023-04-05', 'Agent'),
+-- ('Ethan Hunt', 'Mission*Impossible9', 'ethan.hunt@example.com', 0005, '2023-05-25', 'Agent');
 
 
-INSERT INTO department (name, location) VALUES
-('IT', 'Floor 1'),
-('HR', 'Floor 2'),
-('Finance', 'Floor 3'),
-('Operations', 'Floor 4'),
-('Marketing', 'Floor 5');
+-- INSERT INTO department (name, location) VALUES
+-- ('IT', 'Floor 1'),
+-- ('HR', 'Floor 2'),
+-- ('Finance', 'Floor 3'),
+-- ('Operations', 'Floor 4'),
+-- ('Marketing', 'Floor 5');
 
-INSERT INTO Agent (id, department_id) VALUES
-(2, 1),  -- Bob Smith assigned to IT
-(4, 2),  -- Diana Prince assigned to HR
-(5, 3);  -- Ethan Hunt assigned to Finance
-
-
-
+-- INSERT INTO Agent (id, department_id) VALUES
+-- (2, 1),  -- Bob Smith assigned to IT
+-- (4, 2),  -- Diana Prince assigned to HR
+-- (5, 3);  -- Ethan Hunt assigned to Finance

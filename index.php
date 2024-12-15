@@ -1,9 +1,9 @@
-<!-- profile.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="JS/lodMenue.js"></script>
@@ -50,7 +50,7 @@
             <div class="tabs-header">
                 <button class="tab-btn active" data-tab="settings">Settings</button>
                 <button class="tab-btn" data-tab="security">Security</button>
-                <button class="tab-btn" data-tab="activity">Activity</button>
+                <!-- <button class="tab-btn" data-tab="activity">Activity</button> -->
                 <button class="tab-btn" data-tab="notifications">Notifications</button>
             </div>
 
@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <!-- Activity Tab -->
+            <!-- Activity Tab
             <div class="tab-content" id="activity">
                 <div class="activity-list">
                     <div class="activity-item">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Notifications Tab -->
             <div class="tab-content" id="notifications">

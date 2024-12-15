@@ -1,4 +1,14 @@
+<?php 
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 
+    $error = '';
+    if (isset($_GET['error'])) {
+        // Sanitize the error message to prevent XSS attacks
+        $error = htmlspecialchars($_GET['error']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +22,7 @@
     <div class="container">
         <div class="box form-box  " id="loginForm">
             <header>Login</header>
-            <form  id="loginForm" action="" method="post">
+            <form  id="loginForm" action="login-sys.php" method="post">
                 <div class="field input">
                     <label for="email">Email</label>
                     <input type="text" name="email" id="email" autocomplete="off" required>
@@ -30,9 +40,11 @@
                     <input type="submit" class="btn" name="submit" value="Login"  required>
                 </div>
             </form>
-                 <?php if (!empty($error)): ?>
-                <div style="color: red;"><?php echo htmlspecialchars($error); ?></div>
-                <?php endif; ?>
+            <?php if (!empty($error)): ?>
+            <div style="color: red; margin-top: 15px;"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+                
         </div><br>
    
     </div>  
