@@ -1,6 +1,6 @@
 <?php
 //starting the sesstion 
-// session_start();
+session_start();
 //creat constant to store non repeating values
 
 $dbhost = "localhost";

@@ -1,3 +1,5 @@
+ 
+ 
  <!-- Sidebar Navigation -->
  <div class="sidebar">
     <div class="logo">
@@ -6,28 +8,43 @@
     <nav>
         <ul>
             <li>
-                <a href="inventory-Equipment.html" class="nav-link">
+                <a href="inventory-Equipment.php" class="nav-link">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="profile.html" class="nav-link">
+                <a href="index.php" class="nav-link">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
             </li>
             <li>
-                <a href="STOK-MAniger.html" class="nav-link">
+                <a href="STOK-MAniger.php" class="nav-link">
                     <i class="fas fa-boxes"></i>
                     <span>Stock Management</span>
                 </a>
             </li>
-            <li>
-                <a href=""  class="nav-link">
+            <li class="dropdown">
+                <a href="#" class="nav-link">
                     <i class="fas fa-tools"></i>
-                    <span>Requists</span>
+                    <span>Requests</span>
+                    <i class="fas fa-chevron-down"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="ConReq.php" class="nav-link">
+                            <i class="fas fa-box"></i>
+                            <span>Consumable Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="RepReq.php" class="nav-link">
+                            <i class="fas fa-wrench"></i>
+                            <span>Repair Requests</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="logout">
                 <a href="login.php" class="nav-link">

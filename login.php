@@ -5,9 +5,14 @@
 
     $error = '';
     if (isset($_GET['error'])) {
-        // Sanitize the error message to prevent XSS attacks
         $error = htmlspecialchars($_GET['error']);
+    } elseif (isset($_SESSION['error'])) {
+        $error = htmlspecialchars($_SESSION['error']);
+        unset($_SESSION['error']); // Clear the error after displaying
     }
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,12 +46,9 @@
                 </div>
             </form>
             <?php if (!empty($error)): ?>
-            <div style="color: red; margin-top: 15px;"><?php echo $error; ?></div>
+                <div class="errorMessage"><?php echo $error; ?></div>
             <?php endif; ?>
-
-                
         </div><br>
-   
     </div>  
 </body>
 </html>

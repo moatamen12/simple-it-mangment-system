@@ -1,5 +1,5 @@
 <?php 
-include_once('Conection/connection.php');
+include_once('Connection/connection.php');
 
 if (isset($_POST['submit'])){
     $email = $_POST['email'];
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
             $_SESSION['full_name'] = $user['full_name'];
             $_SESSION['role'] = $user['role'];
 
-            header('location: index.html');
+            header('location: index.php');
             exit();
         }
         else{

@@ -5,7 +5,7 @@ COLLATE utf8mb4_unicode_ci;
 
 -- the user table
 CREATE TABLE `user` (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT  AUTO_INCREMENT,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
     full_name TEXT NOT NULL,
     password TEXT NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -71,7 +71,10 @@ CREATE TABLE consumables_request(
     id BIGINT PRIMARY KEY AUTO_INCREMENT  ,
     consumable_id BIGINT NOT NULL,
     user_id BIGINT NOT NULL,
-    status text CHECK (status IN ('Pending', 'In Progress', 'Completed', 'Refused')) NOT NULL,
+    req_date date NOT NULL,
+    description TEXT,
+    STOCK ENUM('In Stock', 'Out of Stock','LOW IN STUCK') NOT NULL,
+    status ENUM('Pending', 'In Progress', 'Completed', 'Refused') NOT NULL,
     FOREIGN KEY (consumable_id) REFERENCES consumables(id),
     FOREIGN KEY (user_id) REFERENCES `user`(id) 
 );
@@ -80,6 +83,8 @@ CREATE TABLE repair_request (
     id BIGINT PRIMARY KEY AUTO_INCREMENT  ,
     product_id BIGINT NOT NULL,
     agent_id BIGINT NOT NULL,
+    req_date date NOT NULL,
+    COLUMN description TEXT,
     status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (agent_id) REFERENCES `user`(id)
@@ -103,7 +108,24 @@ CREATE TABLE repair_request (
 -- ('Operations', 'Floor 4'),
 -- ('Marketing', 'Floor 5');
 
+
 -- INSERT INTO Agent (id, department_id) VALUES
 -- (2, 1),  -- Bob Smith assigned to IT
 -- (4, 2),  -- Diana Prince assigned to HR
 -- (5, 3);  -- Ethan Hunt assigned to Finance
+
+
+-- INSERT INTO consumables_request (consumable_id, user_id, req_date, description, STOCK, status)
+-- VALUES
+-- (1, 1, '2024-01-01', 'Request for printer ink', 'In Stock', 'Pending'),
+-- (2, 2, '2024-01-02', 'Request for A4 paper', 'Out of Stock', 'In Progress'),
+-- (3, 3, '2024-01-03', 'Request for toner cartridge', 'LOW IN STUCK', 'Completed');
+
+-- INSERT INTO `product` (`id`, `name`, `barcode`, `in_stock`, `status`, `price`) VALUES
+-- (6, 'Unité centrale', 'UC001', 20, 'Active', 500.00),
+-- (7, 'Ecran', 'ECR002', 50, 'Active', 150.00),
+-- (8, 'Micro portable', 'MP003', 30, 'Active', 1000.00),
+-- (9, 'Imprimante', 'IMP004', 15, 'Active', 200.00),
+-- (10, 'Onduleur', 'OND005', 10, 'Active', 300.00),
+-- (11, 'Serveur', 'SRV006', 5, 'Active', 2000.00),
+-- (12, 'Imprimante industrielle', 'IMPI007', 8, 'Active', 1500.00);
