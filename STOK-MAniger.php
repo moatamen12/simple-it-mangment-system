@@ -1,5 +1,10 @@
 <?php 
 include_once("Connection/connection.php");
+// Validate user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 
 $repair_query = "
     SELECT 
@@ -17,9 +22,6 @@ $repair_query = "
 ";
 
 $repair_result = $con->query($repair_query);
-
-
-
 
 ?>
 

@@ -1,5 +1,37 @@
- 
- 
+<?php
+include_once("../Connection/connection.php");
+
+// Check if user is logged in and user type is set
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Get user type from session
+$user_type = $_SESSION['role'];
+
+// Define display names for each user type
+$user_dashboards = [
+    'Agent' => [
+        'page' => 'Agent.php',
+        'title' => 'Agent '
+    ],
+    'Stock Manager' => [
+        'page' => 'STOK-MAniger.php',
+        'title' => 'Stock Manager '
+    ],
+    'Administrator' => [
+        'page' => 'Administrator.php',
+        'title' => 'Administrator '
+    ]
+];
+
+// Get the appropriate dashboard page and title
+$dashboard_page = isset($user_dashboards[$user_type]) ? $user_dashboards[$user_type]['page'] : 'index.php';
+$page_title = isset($user_dashboards[$user_type]) ? $user_dashboards[$user_type]['title'] : 'Dashboard';
+
+
+?>
  <!-- Sidebar Navigation -->
  <div class="sidebar">
     <div class="logo">
@@ -20,9 +52,9 @@
                 </a>
             </li>
             <li>
-                <a href="STOK-MAniger.php" class="nav-link">
+                <a href="<?php echo $dashboard_page; ?>" class="nav-link">
                     <i class="fas fa-boxes"></i>
-                    <span>Stock Management</span>
+                    <span><?php echo $page_title; ?></span>
                 </a>
             </li>
             <li class="dropdown">

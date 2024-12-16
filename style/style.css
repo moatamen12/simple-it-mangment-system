@@ -751,8 +751,10 @@ tr:hover {
 }
 
 .tabs {
+    background-color: var(--box-background);
     display: flex;
     gap: 10px;
+    width: fit-content;
     margin-bottom: 20px;
 }
 
@@ -1094,6 +1096,110 @@ tr:hover {
 .sub-tab-content.active {
     display: block;
     margin-top: 20px;
+}
+
+
+/* Recent Requests Section */
+.recent-requests {
+    margin: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.recent-requests h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.requests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.request-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.request-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    padding: 15px;
+    background: var(--btns-color);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.request-type {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.request-type.consumable {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.request-type.repair {
+    background-color: #ffc107;
+    color: white;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.pending {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.status-badge.in-progress {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.status-badge.completed {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.status-badge.refused {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.card-body {
+    padding: 15px;
+    color: #555;
+}
+
+.card-body p {
+    margin-bottom: 10px;
+}
+
+.no-requests {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
 }
 
 /* main variables */

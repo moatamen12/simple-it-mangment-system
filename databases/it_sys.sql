@@ -75,6 +75,7 @@ CREATE TABLE consumables_request(
     req_date date NOT NULL,
     description TEXT,
     quantity INT NOT NULL DEFAULT 1,
+    request_location VARCHAR(255);
     STOCK ENUM('In Stock', 'Out of Stock','LOW IN STUCK') NOT NULL,
     status ENUM('Pending', 'In Progress', 'Completed', 'Refused') NOT NULL,
     FOREIGN KEY (consumable_id) REFERENCES consumables(id),
@@ -87,12 +88,12 @@ CREATE TABLE repair_request (
     agent_id BIGINT NOT NULL,
     req_date date NOT NULL,
     description TEXT,
+    request_location VARCHAR(255);
     urgency ENUM('low', 'medium', 'high') DEFAULT 'medium'; 
     status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (agent_id) REFERENCES `user`(id)
 );
-
 
 
 -- -- insertion domy data

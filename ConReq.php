@@ -105,7 +105,6 @@ $result = $stmt->get_result();
                     <th>Stuck</th>
                     <th>Date</th>
                     <th>statu</th>
-                    <th>Action</th>    
                 </tr>
             </thead>
             <tbody>
@@ -134,18 +133,7 @@ $result = $stmt->get_result();
                             <?php echo htmlspecialchars($row['status']); ?>
                         </span>
                     </td>
-                    <td data-label="Actions">
-                        <?php if($row['status'] === 'Pending'): ?>
-                            <button class="btn" style="background-color: #4CAF50;" data-btn-type="approve" 
-                                    onclick="updateStatus(<?php echo $row['id']; ?>, 'Completed')">
-                                Approve
-                            </button>
-                            <button class="btn" style="background-color: #f44336;" data-btn-type="reject"
-                                    onclick="updateStatus(<?php echo $row['id']; ?>, 'Refused')">
-                                Reject
-                            </button>
-                        <?php endif; ?>
-                    </td>
+
                 </tr>
                 <?php endwhile; ?>
             </tbody>

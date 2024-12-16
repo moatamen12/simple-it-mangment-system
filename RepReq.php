@@ -1,6 +1,10 @@
 <?php
 include_once("Connection/connection.php");
-
+// Validate user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 // Enable error reporting for debugging (remove in production)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -139,7 +143,6 @@ $result = $stmt->get_result();
                     <th>Product</th>
                     <th>Date</th>
                     <th>Status</th>
-                    <th>Action</th>    
                 </tr>
             </thead>
             <tbody>
@@ -154,29 +157,6 @@ $result = $stmt->get_result();
                                 <span class="status-badge <?php echo strtolower(str_replace(' ', '_', $row['status'])); ?>">
                                     <?php echo htmlspecialchars($row['status']); ?>
                                 </span>
-                            </td>
-                            <td data-label="Action">
-                                <?php if($row['status'] === 'Pending'): ?>
-                                    <!-- Approve Form -->
-                                    <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to approve this request?');">
-                                        <input type="hidden" name="request_id" value="<?php echo $row['id']; ?>">
-                                        <input type="hidden" name="new_status" value="Approved">
-                                        <input type="hidden" name="update_status" value="1">
-                                        <button type="submit" class="btn" style="background-color: #4CAF50;">
-                                            Approve
-                                        </button>
-                                    </form>
-                                    
-                                    <!-- Reject Form -->
-                                    <form method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to reject this request?');">
-                                        <input type="hidden" name="request_id" value="<?php echo $row['id']; ?>">
-                                        <input type="hidden" name="new_status" value="Rejected">
-                                        <input type="hidden" name="update_status" value="1">
-                                        <button type="submit" class="btn" style="background-color: #f44336;">
-                                            Reject
-                                        </button>
-                                    </form>
-                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endwhile; ?>
