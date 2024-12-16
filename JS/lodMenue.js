@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // For loading the menu
-    fetch('components/menue.html')
+    fetch('components/menue.php')
         .then(response => response.text())
         .then(data => {
             document.getElementById('menu-placeholder').innerHTML = data;

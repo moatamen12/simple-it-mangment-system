@@ -33,6 +33,7 @@ CREATE TABLE product (
     name TEXT NOT NULL,
     barcode TEXT NOT NULL,
     in_stock BIGINT NOT NULL,
+    quantity BIGINT NOT NULL,
     status ENUM('Active', 'Under Repair', 'Discarded') DEFAULT 'Active',
     price decimal(10, 2) NOT NULL
 );
@@ -73,6 +74,7 @@ CREATE TABLE consumables_request(
     user_id BIGINT NOT NULL,
     req_date date NOT NULL,
     description TEXT,
+    quantity INT NOT NULL DEFAULT 1,
     STOCK ENUM('In Stock', 'Out of Stock','LOW IN STUCK') NOT NULL,
     status ENUM('Pending', 'In Progress', 'Completed', 'Refused') NOT NULL,
     FOREIGN KEY (consumable_id) REFERENCES consumables(id),
@@ -84,7 +86,8 @@ CREATE TABLE repair_request (
     product_id BIGINT NOT NULL,
     agent_id BIGINT NOT NULL,
     req_date date NOT NULL,
-    COLUMN description TEXT,
+    description TEXT,
+    urgency ENUM('low', 'medium', 'high') DEFAULT 'medium'; 
     status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (agent_id) REFERENCES `user`(id)

@@ -1068,6 +1068,34 @@ tr:hover {
     gap: 10px;
 }
 
+/* Sub-tabs Styles */
+.sub-tabs {
+    display: flex;
+    margin-top: 15px;
+}
+
+.sub-tab-btn {
+    padding: 10px 20px;
+    background: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.sub-tab-btn.active {
+    background: #fff;
+    border-bottom: 2px solid var(--btns-color);
+}
+
+.sub-tab-content {
+    display: none;
+}
+
+.sub-tab-content.active {
+    display: block;
+    margin-top: 20px;
+}
+
 /* main variables */
 :root{
     --background-color:#e4e9f7;
